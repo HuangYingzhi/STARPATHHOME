@@ -1,0 +1,679 @@
+<!-- 星途归家 - 志愿者中心 (带悬浮工具栏) -->
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>志愿者中心 - StarPath 星途归家</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e8e1db",
+                        "surface-container-low": "#faf2ec",
+                        "on-primary-fixed": "#251a00",
+                        "on-secondary-fixed": "#221b0a",
+                        "secondary-fixed": "#efe1c6",
+                        "on-primary-fixed-variant": "#55451b",
+                        "secondary-fixed-dim": "#d3c5ac",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f3",
+                        "primary-fixed-dim": "#dcc48f",
+                        "tertiary": "#456274",
+                        "surface-bright": "#fff8f3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#001e2d",
+                        "secondary-container": "#efe1c6",
+                        "secondary": "#675d49",
+                        "on-primary-container": "#776437",
+                        "surface-dim": "#e0d9d3",
+                        "surface-variant": "#e8e1db",
+                        "tertiary-container": "#cbe9ff",
+                        "on-error-container": "#93000a",
+                        "primary": "#6f5c31",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#6e634e",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eee7e1",
+                        "on-background": "#1e1b18",
+                        "tertiary-fixed-dim": "#adcae0",
+                        "on-surface": "#1e1b18",
+                        "inverse-surface": "#33302c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#4f4632",
+                        "inverse-primary": "#dcc48f",
+                        "tertiary-fixed": "#c9e7fc",
+                        "inverse-on-surface": "#f7efe9",
+                        "surface-tint": "#6f5c31",
+                        "surface-container": "#f4ede6",
+                        "primary-container": "#fce2ab",
+                        "outline": "#7e7669",
+                        "on-tertiary-container": "#4d697c",
+                        "on-surface-variant": "#4c463b",
+                        "outline-variant": "#cfc5b7",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#fae0a9",
+                        "on-tertiary-fixed-variant": "#2d4a5c",
+                        "surface": "#fff8f3",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "12px",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-xs": "4px",
+                        "unit-sm": "8px",
+                        "container-max": "1200px",
+                        "margin-desktop": "120px",
+                        "unit-xl": "48px",
+                        "gutter": "24px",
+                        "unit-lg": "24px",
+                        "margin-mobile": "20px",
+                        "columns": "12",
+                        "unit-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "display-lg-mobile": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+<style id="starpath-v2-polish">
+  :root {
+    --star-gold: #d4a74e;
+    --star-gold-deep: #9a6507;
+    --warm-bg: #fff8f0;
+    --ink: #241f18;
+    --soft-blue: #7aa8bb;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255, 226, 160, .38), transparent 28rem),
+      radial-gradient(circle at 90% 18%, rgba(122, 168, 187, .16), transparent 24rem),
+      linear-gradient(180deg, #fff9f0 0%, #fffaf6 52%, #f7efe3 100%) !important;
+    color: var(--ink);
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(120deg, transparent 0 45%, rgba(212,167,78,.12) 46%, transparent 49%),
+      radial-gradient(circle, rgba(212,167,78,.18) 1px, transparent 1.5px);
+    background-size: 100% 100%, 34px 34px;
+    opacity: .45;
+    z-index: -1;
+  }
+  header {
+    backdrop-filter: blur(18px);
+    background: rgba(255, 248, 242, .88) !important;
+  }
+  h1, h2, h3 {
+    letter-spacing: 0 !important;
+  }
+  img {
+    max-width: 100%;
+  }
+  .starpath-window,
+  .rounded-xl,
+  .rounded-lg {
+    box-shadow: 0 18px 55px rgba(111, 92, 49, .08);
+  }
+  .starpath-active-link {
+    color: #6f5c31 !important;
+    border-bottom: 2px solid var(--star-gold);
+    padding-bottom: .25rem;
+    font-weight: 800 !important;
+  }
+  .starpath-page-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .75rem;
+    border-radius: 999px;
+    background: rgba(212, 167, 78, .14);
+    color: #6f5c31;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+  .starpath-page-mark::before {
+    content: "";
+    width: .55rem;
+    height: .55rem;
+    border-radius: 999px;
+    background: var(--star-gold);
+    box-shadow: 0 0 18px rgba(212,167,78,.65);
+  }
+</style>
+
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-x-hidden" data-mode="connect">
+<!-- TopAppBar -->
+<header class="bg-background w-full top-0 sticky z-50 border-b border-outline-variant">
+<nav class="flex justify-between items-center max-w-[1200px] mx-auto px-unit-lg py-unit-md"><div class="flex items-center gap-unit-md"><div class="flex items-center gap-2"><div class="w-10 h-10 flex items-center justify-center text-[#D4A74E]"><span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">star</span></div><div class="flex flex-col"><span class="font-display text-xl font-bold text-primary leading-none tracking-tight">星途归家</span><span class="text-[10px] text-secondary font-medium tracking-[0.2em] uppercase">StarPath Home</span></div></div></div><div class="hidden md:flex gap-unit-xl items-center"><a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="index.html">首页</a><a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="hall.html">智能寻亲</a><a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="clues.html">线索中心</a><a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="volunteer.html">志愿者</a><a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="about.html">关于我们</a></div><div class="flex items-center gap-4"><button class="bg-[#D4A74E] text-white px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-all shadow-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm">add_circle</span>发布寻人信息</button></div></nav>
+</header>
+<div class="starpath-page-mark">志愿者 / StarPath Home</div>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center justify-center overflow-hidden">
+<img alt="" class="absolute inset-0 w-full h-full object-cover blur-sm" src="assets/images/volunteer-01.jpg">
+<div class="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
+<div class="relative z-10 text-center text-white px-margin-mobile max-w-3xl">
+<h1 class="font-display-lg text-display-lg mb-unit-md md:font-display-lg md:text-display-lg font-bold">志愿者服务</h1>
+<p class="font-body-lg text-body-lg mb-unit-xl opacity-90">用行动传递希望，让更多家庭早日团圆</p>
+<div class="flex flex-col md:flex-row gap-unit-md justify-center">
+<a class="bg-primary text-on-primary px-10 py-4 rounded-lg font-headline-md text-headline-md hover:scale-105 transition-transform" href="#register-form">立即加入志愿者</a>
+<a class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-lg font-headline-md text-headline-md hover:bg-white/30 transition-all" href="#">了解服务内容</a>
+</div>
+</div>
+</section>
+<!-- Data Dashboard -->
+<section class="bg-surface-container-low py-unit-xl">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-gutter">
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant text-center shadow-sm">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-unit-xs">注册志愿者</p>
+<h3 class="text-primary font-headline-lg text-headline-lg">12,482</h3>
+</div>
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant text-center shadow-sm">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-unit-xs">活跃志愿者</p>
+<h3 class="text-primary font-headline-lg text-headline-lg">3,105</h3>
+</div>
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant text-center shadow-sm">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-unit-xs">服务时长 (h)</p>
+<h3 class="text-primary font-headline-lg text-headline-lg">156k+</h3>
+</div>
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant text-center shadow-sm">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-unit-xs">协助核验线索</p>
+<h3 class="text-primary font-headline-lg text-headline-lg">8,291</h3>
+</div>
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant text-center shadow-sm col-span-2 md:col-span-1">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-unit-xs">成功协助团圆</p>
+<h3 class="text-primary font-headline-lg text-headline-lg">452</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Areas -->
+<section class="py-unit-xl bg-surface">
+<div class="max-w-[1200px] mx-auto px-unit-lg text-center">
+<h2 class="font-headline-lg text-headline-lg mb-unit-xl text-on-surface">志愿者服务领域</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="p-unit-lg rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary text-[48px] mb-unit-md group-hover:scale-110 transition-transform">search_check</span>
+<h4 class="font-headline-md text-headline-md mb-unit-sm">线索收集</h4>
+<p class="text-on-surface-variant">在全国范围内整合失踪线索，通过数字工具初步筛查有效信息。</p>
+</div>
+<div class="p-unit-lg rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary text-[48px] mb-unit-md group-hover:scale-110 transition-transform">verified</span>
+<h4 class="font-headline-md text-headline-md mb-unit-sm">信息核验</h4>
+<p class="text-on-surface-variant">对接相关机构，实地或通过电话、网络等多维手段交叉核准身份信息。</p>
+</div>
+<div class="p-unit-lg rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary text-[48px] mb-unit-md group-hover:scale-110 transition-transform">travel_explore</span>
+<h4 class="font-headline-md text-headline-md mb-unit-sm">线下寻访</h4>
+<p class="text-on-surface-variant">深入偏远地区，协助寻亲家庭进行实地走访、张贴寻人启事等基层工作。</p>
+</div>
+<div class="p-unit-lg rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-primary text-[48px] mb-unit-md group-hover:scale-110 transition-transform">campaign</span>
+<h4 class="font-headline-md text-headline-md mb-unit-sm">公益宣传</h4>
+<p class="text-on-surface-variant">利用社交媒体平台开展防走失科普，扩大寻亲信息的社会覆盖面。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recruitment -->
+<section class="py-unit-xl bg-surface-container-low">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<div class="flex justify-between items-end mb-unit-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">最新招募岗位</h2>
+<a class="text-primary font-label-md text-label-md flex items-center gap-unit-xs hover:underline" href="#">查看全部岗位 <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-unit-md">
+<h4 class="font-headline-md text-headline-md">数据核对官</h4>
+<span class="px-unit-sm py-1 bg-secondary-container text-on-secondary-container rounded text-label-sm font-label-sm">紧急</span>
+</div>
+<p class="text-on-surface-variant mb-unit-lg flex-grow">协助管理后台数据，核实用户提交的初级寻人线索的真实性。</p>
+<div class="space-y-unit-sm mb-unit-lg text-on-surface-variant text-label-md font-label-md">
+<div class="flex items-center gap-unit-sm"><span class="material-symbols-outlined text-[18px]">distance</span> 远程在线</div>
+<div class="flex items-center gap-unit-sm"><span class="material-symbols-outlined text-[18px]">schedule</span> 每天至少1小时</div>
+</div>
+<button class="w-full py-unit-sm border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all">立即申请</button>
+</div>
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-unit-md">
+<h4 class="font-headline-md text-headline-md">寻访联络员</h4>
+<span class="px-unit-sm py-1 bg-tertiary-container text-on-tertiary-container rounded text-label-sm font-label-sm">招募中</span>
+</div>
+<p class="text-on-surface-variant mb-unit-lg flex-grow">作为当地支点的联络人，协调志愿者进行实地情况走访及对接。</p>
+<div class="space-y-unit-sm mb-unit-lg text-on-surface-variant text-label-md font-label-md">
+<div class="flex items-center gap-unit-sm"><span class="material-symbols-outlined text-[18px]">location_on</span> 四川、重庆、云南</div>
+<div class="flex items-center gap-unit-sm"><span class="material-symbols-outlined text-[18px]">schedule</span> 弹性工作</div>
+</div>
+<button class="w-full py-unit-sm border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all">立即申请</button>
+</div>
+<div class="bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant flex flex-col h-full shadow-sm">
+<div class="flex justify-between items-start mb-unit-md">
+<h4 class="font-headline-md text-headline-md">新媒体创作</h4>
+<span class="px-unit-sm py-1 bg-tertiary-container text-on-tertiary-container rounded text-label-sm font-label-sm">招募中</span>
+</div>
+<p class="text-on-surface-variant mb-unit-lg flex-grow">负责寻亲故事的撰写及短视频脚本策划，提升公众关注度。</p>
+<div class="space-y-unit-sm mb-unit-lg text-on-surface-variant text-label-md font-label-md">
+<div class="flex items-center gap-unit-sm"><span class="material-symbols-outlined text-[18px]">distance</span> 远程在线</div>
+<div class="flex items-center gap-unit-sm"><span class="material-symbols-outlined text-[18px]">brush</span> 文字/视频剪辑</div>
+</div>
+<button class="w-full py-unit-sm border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all">立即申请</button>
+</div>
+</div>
+<!-- Pagination Component -->
+<div class="mt-unit-xl flex flex-col md:flex-row justify-between items-center gap-unit-md text-on-surface-variant font-label-md text-label-md">
+<div class="">已显示 1-12 条，共 286 条记录</div>
+<div class="flex items-center gap-unit-sm">
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-10 h-10 rounded border border-primary bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:border-primary hover:text-primary transition-colors">2</button>
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:border-primary hover:text-primary transition-colors">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:border-primary hover:text-primary transition-colors">24</button>
+<button class="w-10 h-10 rounded border border-outline-variant flex items-center justify-center hover:bg-surface-container hover:text-primary transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+<div class="flex items-center gap-unit-sm ml-unit-md">
+<span class="">跳至</span>
+<input class="w-12 h-10 border border-outline-variant rounded text-center outline-none focus:border-primary" placeholder="5" type="text">
+<span class="">页</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Volunteer Stories -->
+<section class="py-unit-xl bg-surface">
+<div class="max-w-[1200px] mx-auto px-unit-lg overflow-hidden">
+<h2 class="font-headline-lg text-headline-lg mb-unit-xl text-on-surface">志愿者故事</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter pb-unit-lg">
+<!-- Story Card 1 -->
+<div class="w-full bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-unit-md mb-unit-md">
+<img alt="志愿者头像" class="w-16 h-16 rounded-full bg-secondary-container" src="assets/images/volunteer-02.jpg">
+<div>
+<h4 class="font-headline-md text-headline-md">林建国</h4>
+<p class="text-on-surface-variant text-label-sm font-label-sm">资深寻人志愿者</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit-sm mb-unit-md border-y border-outline-variant py-unit-sm">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">服务时长</p>
+<p class="font-bold text-primary">1,240 小时</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">协助团圆</p>
+<p class="font-bold text-primary">12 个家庭</p>
+</div>
+</div>
+<blockquote class="italic text-on-surface-variant relative pt-unit-md">
+<span class="material-symbols-outlined absolute top-0 left-0 opacity-20 scale-150">format_quote</span>
+                            “每一次看到失散多年的亲人紧紧相拥，我都觉得所有的奔波和等待都值了。我们不仅在寻找人，更在缝合破碎的心。”
+                        </blockquote>
+</div>
+<!-- Story Card 2 -->
+<div class="w-full bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-unit-md mb-unit-md">
+<img alt="志愿者头像" class="w-16 h-16 rounded-full bg-secondary-container" src="assets/images/volunteer-03.jpg">
+<div>
+<h4 class="font-headline-md text-headline-md">张梦华</h4>
+<p class="text-on-surface-variant text-label-sm font-label-sm">大学生信息核验组</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit-sm mb-unit-md border-y border-outline-variant py-unit-sm">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">服务时长</p>
+<p class="font-bold text-primary">450 小时</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">线索核实</p>
+<p class="font-bold text-primary">850 余条</p>
+</div>
+</div>
+<blockquote class="italic text-on-surface-variant relative pt-unit-md">
+<span class="material-symbols-outlined absolute top-0 left-0 opacity-20 scale-150">format_quote</span>
+                            “数字背后的温度是我们需要去守护的。虽然只是在屏幕后核实，但我知道每通过一个核验，团圆的机会就多了一分。”
+                        </blockquote>
+</div>
+<!-- Story Card 3 -->
+<div class="w-full bg-surface-container-lowest p-unit-lg rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-unit-md mb-unit-md">
+<img alt="志愿者头像" class="w-16 h-16 rounded-full bg-secondary-container" src="assets/images/volunteer-01.jpg">
+<div>
+<h4 class="font-headline-md text-headline-md">陈志远</h4>
+<p class="text-on-surface-variant text-label-sm font-label-sm">线下寻访分队长</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-unit-sm mb-unit-md border-y border-outline-variant py-unit-sm">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">服务时长</p>
+<p class="font-bold text-primary">2,100 小时</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">协助团圆</p>
+<p class="font-bold text-primary">28 个家庭</p>
+</div>
+</div>
+<blockquote class="italic text-on-surface-variant relative pt-unit-md">
+<span class="material-symbols-outlined absolute top-0 left-0 opacity-20 scale-150">format_quote</span>
+                            “走遍千山万水，只为那一刻的奇迹。志愿者不只是一份工作，它是对生命尊严的接力。”
+                        </blockquote>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activities -->
+<section class="py-unit-xl bg-surface-container-low">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<h2 class="font-headline-lg text-headline-lg mb-unit-xl text-on-surface">近期志愿者活动</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant group">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A group of diverse volunteers in bright blue vests working together in a sunlit urban park, planting small trees and chatting cheerfully. The style is modern, cinematic with soft focus on the background greenery, warm sunlight filtering through leaves, and a sense of community action. Professional high-end light mode photography." src="assets/images/volunteer-02.jpg">
+</div>
+<div class="p-unit-lg">
+<h4 class="font-headline-md text-headline-md mb-unit-sm">寻找失落的童年·线下走访活动</h4>
+<div class="flex items-center gap-unit-sm text-on-surface-variant text-label-md mb-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span> 2026.05.20
+                            </div>
+<div class="flex items-center gap-unit-sm text-on-surface-variant text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> 湖南省岳阳市
+                            </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant group">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional indoor workshop setting with people gathered around large touchscreens and whiteboards, collaborating on data analysis. Bright, even studio lighting creates a clean and focused corporate social responsibility atmosphere. Sophisticated minimalist interior with neutral tones and tech equipment, highlighting the data verification process of volunteers." src="assets/images/volunteer-03.jpg">
+</div>
+<div class="p-unit-lg">
+<h4 class="font-headline-md text-headline-md mb-unit-sm">全国志愿者赋能培训会（线上）</h4>
+<div class="flex items-center gap-unit-sm text-on-surface-variant text-label-md mb-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span> 2026.06.01
+                            </div>
+<div class="flex items-center gap-unit-sm text-on-surface-variant text-label-md">
+<span class="material-symbols-outlined text-[18px]">videocam</span> 腾讯会议 / 云端
+                            </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant group">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A heartwarming scene showing a volunteer explaining how to use a mobile app to an elderly person in a cozy community center. Warm interior lighting with gold accents, emphasizing connection and hope. Minimalist furniture and large windows create a bright, inviting atmosphere for humanitarian outreach and public welfare work." src="assets/images/volunteer-01.jpg">
+</div>
+<div class="p-unit-lg">
+<h4 class="font-headline-md text-headline-md mb-unit-sm">“防走失计划”社区公益讲座</h4>
+<div class="flex items-center gap-unit-sm text-on-surface-variant text-label-md mb-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span> 2026.06.15
+                            </div>
+<div class="flex items-center gap-unit-sm text-on-surface-variant text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> 广州市天河区社区中心
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Join Flow -->
+<section class="py-unit-xl bg-surface">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<h2 class="font-headline-lg text-headline-lg mb-unit-xl text-center text-on-surface">如何加入我们</h2>
+<div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-unit-xl mt-unit-xl">
+<!-- Line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+<!-- Steps -->
+<div class="relative z-10 bg-surface md:w-48 text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold mb-unit-md shadow-md">1</div>
+<h5 class="font-headline-md text-headline-md mb-unit-xs">提交申请</h5>
+<p class="text-on-surface-variant text-label-sm font-label-sm">填写下方报名表格</p>
+</div>
+<div class="relative z-10 bg-surface md:w-48 text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold mb-unit-md shadow-sm">2</div>
+<h5 class="font-headline-md text-headline-md mb-unit-xs">资料审核</h5>
+<p class="text-on-surface-variant text-label-sm font-label-sm">通常需要1-3个工作日</p>
+</div>
+<div class="relative z-10 bg-surface md:w-48 text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold mb-unit-md shadow-sm">3</div>
+<h5 class="font-headline-md text-headline-md mb-unit-xs">线上培训</h5>
+<p class="text-on-surface-variant text-label-sm font-label-sm">学习寻人基础知识</p>
+</div>
+<div class="relative z-10 bg-surface md:w-48 text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold mb-unit-md shadow-sm">4</div>
+<h5 class="font-headline-md text-headline-md mb-unit-xs">加入团队</h5>
+<p class="text-on-surface-variant text-label-sm font-label-sm">分配至相应兴趣小组</p>
+</div>
+<div class="relative z-10 bg-surface md:w-48 text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center font-bold mb-unit-md shadow-sm">5</div>
+<h5 class="font-headline-md text-headline-md mb-unit-xs">参与服务</h5>
+<p class="text-on-surface-variant text-label-sm font-label-sm">开启您的公益旅程</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-unit-xl bg-surface-container-low">
+<div class="max-w-2xl mx-auto px-margin-mobile">
+<h2 class="font-headline-lg text-headline-lg mb-unit-xl text-center text-on-surface">常见问题</h2>
+<div class="space-y-unit-md">
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant">
+<button class="w-full flex justify-between items-center p-unit-lg text-left" onclick="toggleFaq(0)">
+<span class="font-headline-md text-headline-md">作为志愿者我需要承担费用吗？</span>
+<span class="material-symbols-outlined text-primary transition-transform" id="faq-icon-0">expand_more</span>
+</button>
+<div class="hidden px-unit-lg pb-unit-lg text-on-surface-variant" id="faq-content-0">
+                            所有的志愿服务均基于自愿原则，不需要缴纳任何费用。线下的必要公干开支，我们会根据具体的项目活动进行相应报销或专项经费支持。
+                        </div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant">
+<button class="w-full flex justify-between items-center p-unit-lg text-left" onclick="toggleFaq(1)">
+<span class="font-headline-md text-headline-md">学生身份可以加入吗？</span>
+<span class="material-symbols-outlined text-primary transition-transform" id="faq-icon-1">expand_more</span>
+</button>
+<div class="hidden px-unit-lg pb-unit-lg text-on-surface-variant" id="faq-content-1">
+                            非常欢迎！我们有专门的线上核验组和公益传播组，非常适合利用课余时间贡献青春力量。我们也可以为完成服务时长后的志愿者提供官方出具的志愿服务证明。
+                        </div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant">
+<button class="w-full flex justify-between items-center p-unit-lg text-left" onclick="toggleFaq(2)">
+<span class="font-headline-md text-headline-md">如果没有寻人经验可以加入吗？</span>
+<span class="material-symbols-outlined text-primary transition-transform" id="faq-icon-2">expand_more</span>
+</button>
+<div class="hidden px-unit-lg pb-unit-lg text-on-surface-variant" id="faq-content-2">
+                            没有问题。每一位新入职的志愿者都需要经过系统的线上培训，我们会分配经验丰富的“导师”带您入门。
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Registration Form -->
+<section class="py-unit-xl bg-surface" id="register-form">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<div class="bg-surface-container-lowest rounded-lg shadow-xl p-unit-lg md:p-unit-xl border border-outline-variant max-w-4xl mx-auto">
+<div class="text-center mb-unit-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-unit-sm">成为星途志愿者</h2>
+<p class="text-on-surface-variant">请填写以下信息，我们的工作人员将在48小时内与您联系</p>
+</div>
+<form class="space-y-unit-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-unit-lg">
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">姓名</label>
+<input class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="请输入您的姓名" type="text">
+</div>
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">手机号码</label>
+<input class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="请输入11位手机号" type="tel">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-unit-lg">
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">所在地区</label>
+<input class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="省/市/区" type="text">
+</div>
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">当前职业</label>
+<input class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="如：学生、IT经理、医生等" type="text">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-unit-lg">
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">意向服务方向</label>
+<select class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none bg-no-repeat bg-[right_16px_center]">
+<option>线索收集</option>
+<option>信息核验</option>
+<option>线下寻访</option>
+<option>公益宣传</option>
+</select>
+</div>
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">可投入服务时间</label>
+<select class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none bg-no-repeat bg-[right_16px_center]">
+<option>每天1-2小时</option>
+<option>每周固定时间</option>
+<option>仅周末可用</option>
+<option>弹性时间</option>
+</select>
+</div>
+</div>
+<div class="space-y-unit-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant block">个人简介/相关经历</label>
+<textarea class="w-full border border-outline-variant rounded-lg p-unit-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="请简要介绍您的技能及参与公益的初衷..." rows="4"></textarea>
+</div>
+<div class="flex items-center gap-unit-sm">
+<input class="w-4 h-4 rounded text-primary border-outline-variant" id="agreement" type="checkbox">
+<label class="text-label-sm font-label-sm text-on-surface-variant" for="agreement">我已阅读并同意《志愿者服务协议》与《隐私保护政策》</label>
+</div>
+<button class="w-full py-unit-lg bg-primary text-on-primary rounded-lg font-headline-md text-headline-md shadow-lg hover:opacity-90 transition-all" type="submit">提交申请</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Bottom CTA -->
+<section class="bg-primary py-24 text-center">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<h2 class="font-display-lg-mobile md:font-display-lg text-white mb-unit-lg">成为志愿者，让爱与希望继续传递</h2>
+<p class="text-white/80 font-body-lg text-body-lg mb-unit-xl max-w-2xl mx-auto">您的每一次参与，都是在为破碎家庭搭建回归之路。每一份力量都至关重要。</p>
+<button class="bg-white text-primary px-12 py-4 rounded-full font-headline-md text-headline-md hover:bg-surface-container-highest transition-all shadow-xl">点击开始一段意义非凡的旅程</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-[1200px] mx-auto px-unit-lg py-unit-xl grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-primary font-bold">星途归家</div>
+<p class="text-secondary text-label-sm leading-relaxed max-w-[240px]">
+                    星途归家是一个非营利性平台，致力于帮助失散家庭团圆。我们尊重隐私，保护信息安全，与您一起守护希望。
+                </p>
+<div class="flex gap-4">
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">chat</span></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">hub</span></a>
+</div>
+</div>
+<div class="space-y-6">
+<h6 class="font-bold text-on-background">平台服务</h6>
+<ul class="space-y-3 text-on-surface-variant font-label-sm">
+<li class=""><a class="hover:underline decoration-primary" href="hall.html#publish">发布寻人信息</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">线索提交</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">信息核实流程</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">寻人资源中心</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="font-bold text-on-background">帮助与支持</h6>
+<ul class="space-y-3 text-on-surface-variant font-label-sm">
+<li class=""><a class="hover:underline decoration-primary" href="#">常见问题</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">安全与隐私</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">使用指南</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">联系我们</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="font-bold text-on-background">订阅我们的最新动态</h6>
+<p class="text-on-surface-variant font-label-sm">获取寻人知识、成功故事与平台最新进展。</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-background border border-outline-variant rounded px-4 py-2 text-label-sm focus:border-primary focus:ring-0 outline-none" placeholder="请输入您的邮箱" type="email">
+<button class="bg-on-background text-background px-4 py-2 rounded text-label-sm font-bold">订阅</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto px-unit-lg py-unit-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant font-label-sm">
+<div class=""><span style="font-family: Inter;" class="">© 2026 星途归家 (StarPath Home) 公益寻亲平台 版权所有</span></div>
+<div class="flex gap-8">
+<a class="hover:text-primary" href="#">隐私政策</a>
+<a class="hover:text-primary" href="#">服务条款</a>
+<a class="hover:text-primary" href="#">免责声明</a>
+</div>
+</div>
+</footer>
+<script>
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            const isHidden = content.classList.contains('hidden');
+            
+            // Close all
+            document.querySelectorAll('[id^="faq-content-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('[id^="faq-icon-"]').forEach(el => el.style.transform = 'rotate(0deg)');
+            
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+<div class="fixed bottom-unit-lg right-unit-lg flex flex-col gap-unit-sm z-50">
+<!-- AI Assistant Button -->
+<button class="w-12 h-12 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform group relative" title="AI 助手">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="absolute right-full mr-unit-md px-unit-sm py-1 bg-inverse-surface text-background text-label-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">AI 助手</span>
+</button>
+<!-- Contact Us Button -->
+<button class="w-12 h-12 bg-white text-primary border border-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform group relative" title="联系我们">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="absolute right-full mr-unit-md px-unit-sm py-1 bg-inverse-surface text-background text-label-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">联系我们</span>
+</button>
+<!-- Back to Top Button -->
+<button class="w-12 h-12 bg-white text-secondary border border-outline-variant rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform group relative" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+<span class="material-symbols-outlined">arrow_upward</span>
+<span class="absolute right-full mr-unit-md px-unit-sm py-1 bg-inverse-surface text-background text-label-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">回到顶部</span>
+</button>
+</div>
+
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,420 @@
+<!-- 星途归家 - 首页 (星轨寻亲流程版) -->
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>星途归家 TraceHope - 让爱与希望不再走失</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .star-gold-gradient {
+            background: linear-gradient(135deg, #d4a74e 0%, #7b5800 100%);
+        }
+        .text-star-gold { color: #d4a74e; }
+        .bg-star-gold { background-color: #d4a74e; }
+        .border-star-gold { border-color: #d4a74e; }
+        
+        body {
+            background-color: #fbf9f8;
+            color: #1b1c1c;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-surface-variant": "#4c463b", background: "#fff8f2", "primary-container": "#fde2ac", "on-primary-fixed-variant": "#56441c", "on-error-container": "#93000a", "secondary-fixed-dim": "#d3c5ac", "on-background": "#1d1b18", "surface-container-low": "#f9f2ec", outline: "#7e7669", "on-error": "#ffffff", "tertiary-fixed-dim": "#adcae0", "on-tertiary-fixed-variant": "#2d4a5c", "surface-container-high": "#eee7e1", "secondary-container": "#f0e1c7", "on-tertiary": "#ffffff", "on-secondary-fixed": "#221b0b", "inverse-surface": "#33302c", "surface-variant": "#e8e1db", "surface-bright": "#fff8f2", "on-primary": "#ffffff", "inverse-on-surface": "#f6f0e9", "secondary-fixed": "#f0e1c7", "primary-fixed": "#fadfaa", secondary: "#685d49", "on-surface": "#1d1b18", "surface-container-highest": "#e8e1db", "outline-variant": "#cfc5b7", "on-tertiary-fixed": "#001e2d", "surface-dim": "#dfd9d3", "primary-fixed-dim": "#ddc490", "on-secondary-container": "#6e634e", "error-container": "#ffdad6", "on-tertiary-container": "#4d697c", tertiary: "#456274", "surface-container-lowest": "#ffffff", surface: "#fff8f2", "on-primary-container": "#776338", "tertiary-fixed": "#c9e7fc", "on-secondary-fixed-variant": "#4f4633", "on-primary-fixed": "#251a00", "surface-container": "#f3ede6", error: "#ba1a1a", "tertiary-container": "#cbe9ff", "on-secondary": "#ffffff", "inverse-primary": "#ddc490", "surface-tint": "#6f5c31", primary: "#6f5c31"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"unit-lg": "24px", "unit-md": "16px", "margin-desktop": "120px", "container-max": "1200px", columns: "12", "margin-mobile": "20px", "unit-xs": "4px", "unit-sm": "8px", "unit-xl": "48px", gutter: "24px"}, fontFamily: {display: ["Inter"], body: ["Inter"], headline: ["Inter"], label: ["Inter"]}, fontSize: {"display-lg": ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700"}], "headline-lg": ["32px", {lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}], "label-sm": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600"}]}}}};</script>
+
+<style id="starpath-v2-polish">
+  :root {
+    --star-gold: #d4a74e;
+    --star-gold-deep: #9a6507;
+    --warm-bg: #fff8f0;
+    --ink: #241f18;
+    --soft-blue: #7aa8bb;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255, 226, 160, .38), transparent 28rem),
+      radial-gradient(circle at 90% 18%, rgba(122, 168, 187, .16), transparent 24rem),
+      linear-gradient(180deg, #fff9f0 0%, #fffaf6 52%, #f7efe3 100%) !important;
+    color: var(--ink);
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(120deg, transparent 0 45%, rgba(212,167,78,.12) 46%, transparent 49%),
+      radial-gradient(circle, rgba(212,167,78,.18) 1px, transparent 1.5px);
+    background-size: 100% 100%, 34px 34px;
+    opacity: .45;
+    z-index: -1;
+  }
+  header {
+    backdrop-filter: blur(18px);
+    background: rgba(255, 248, 242, .88) !important;
+  }
+  h1, h2, h3 {
+    letter-spacing: 0 !important;
+  }
+  img {
+    max-width: 100%;
+  }
+  .starpath-window,
+  .rounded-xl,
+  .rounded-lg {
+    box-shadow: 0 18px 55px rgba(111, 92, 49, .08);
+  }
+  .starpath-active-link {
+    color: #6f5c31 !important;
+    border-bottom: 2px solid var(--star-gold);
+    padding-bottom: .25rem;
+    font-weight: 800 !important;
+  }
+  .starpath-page-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .75rem;
+    border-radius: 999px;
+    background: rgba(212, 167, 78, .14);
+    color: #6f5c31;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+  .starpath-page-mark::before {
+    content: "";
+    width: .55rem;
+    height: .55rem;
+    border-radius: 999px;
+    background: var(--star-gold);
+    box-shadow: 0 0 18px rgba(212,167,78,.65);
+  }
+</style>
+
+</head>
+<body class="font-body overflow-y-auto">
+<!-- Top Navigation Bar -->
+<header class="bg-background w-full top-0 sticky z-50 border-b border-outline-variant">
+<nav class="flex justify-between items-center max-w-[1200px] mx-auto px-unit-lg py-unit-md"><div class="flex items-center gap-unit-md"><div class="flex items-center gap-2"><div class="w-10 h-10 flex items-center justify-center text-[#D4A74E]"><span class="material-symbols-outlined text-[32px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span></div><div class="flex flex-col"><span class="font-display text-xl font-bold text-primary leading-none tracking-tight">星途归家</span><span class="text-[10px] text-secondary font-medium tracking-[0.2em] uppercase">StarPath Home</span></div></div></div><div class="hidden md:flex gap-unit-xl items-center"><a class="text-primary font-bold border-b-2 border-primary pb-1 text-body-md" href="index.html">首页</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="hall.html">智能寻亲</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="clues.html">线索中心</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="volunteer.html">志愿者</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="about.html">关于我们</a></div><div class="flex items-center gap-4"><button class="bg-[#D4A74E] text-white px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-all shadow-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm">add_circle</span>发布寻人信息</button></div></nav>
+</header>
+<div class="starpath-page-mark">首页 / StarPath Home</div>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-unit-xl pb-unit-xl md:pb-0 bg-background">
+<div class="max-w-[1200px] mx-auto px-unit-lg grid md:grid-cols-2 gap-gutter items-center">
+<div class="relative z-10 space-y-unit-lg">
+<h1 class="font-display text-[56px] md:text-[72px] leading-[1.1] font-extrabold text-on-background tracking-tight">
+                        每一次寻找<br>
+                        都让回家<br>
+<span class="text-primary-container">更近一步</span>
+</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-[480px]">
+                        星途归家连接每一份思念与善意，用科技与协作点亮回家的路。
+                    </p>
+<div class="flex flex-wrap gap-unit-md pt-unit-sm">
+<button class="bg-on-background text-background px-8 py-4 rounded-lg font-bold hover:bg-primary transition-all duration-300">
+                            发布寻人信息
+                        </button>
+<button class="flex items-center gap-2 text-on-background font-semibold hover:text-primary transition-colors group">体验AI智能寻亲<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></button>
+</div><div class="flex gap-4 pt-4 text-secondary text-label-sm"><span class="flex items-center gap-1">✓ AI智能寻亲</span><span class="flex items-center gap-1">✓ AI年龄推演</span><span class="flex items-center gap-1">✓ AI线索匹配</span></div>
+</div>
+<div class="relative h-[600px] md:h-[800px] rounded-bl-[120px] overflow-hidden group"><img alt="寻亲统计与星空背景" class="w-full h-full object-cover" src="assets/images/home-01.jpg"></div>
+</div>
+</section>
+<!-- We Help Section -->
+<section class="py-unit-xl bg-surface-container-lowest">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<div class="flex items-center gap-4 mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-background">汇聚多方力量，守护每一份希望</h2>
+<div class="w-16 h-[2px] bg-outline-variant"></div>
+</div>
+<div class="grid md:grid-cols-4 gap-gutter">
+<!-- Families -->
+<div class="space-y-6 group p-4 rounded-xl hover:bg-background transition-colors">
+<div class="text-primary">
+<span class="material-symbols-outlined text-[48px] font-light">family_restroom</span>
+</div>
+<h3 class="font-headline-md text-headline-md">家属</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+                            发布寻人信息，获取专业支持，与社会力量一起寻找亲人。
+                        </p>
+<a class="inline-flex items-center gap-2 text-primary font-bold group" href="#">
+                            立即发布寻人信息
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Clue Providers -->
+<div class="space-y-6 group p-4 rounded-xl hover:bg-background transition-colors">
+<div class="text-primary">
+<span class="material-symbols-outlined text-[48px] font-light">search_check</span>
+</div>
+<h3 class="font-headline-md text-headline-md">线索提供者</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+                            您的一条线索，可能改变一个家庭的命运。
+                        </p>
+<a class="inline-flex items-center gap-2 text-primary font-bold group" href="#">
+                            提交线索
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Volunteers -->
+<div class="space-y-6 group p-4 rounded-xl hover:bg-background transition-colors">
+<div class="text-primary">
+<span class="material-symbols-outlined text-[48px] font-light">volunteer_activism</span>
+</div>
+<h3 class="font-headline-md text-headline-md">志愿者</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+                            加入我们，参与信息核实与寻人协作，让爱心成为行动。
+                        </p>
+<a class="inline-flex items-center gap-2 text-primary font-bold group" href="#">
+                            成为志愿者
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Side Image / Text -->
+<div class="space-y-6 group p-4 rounded-xl hover:bg-background transition-colors"><div class="text-primary"><span class="material-symbols-outlined text-[48px] font-light">psychology</span></div><h3 class="font-headline-md text-headline-md">AI智能寻亲</h3><p class="text-on-surface-variant text-body-md leading-relaxed">利用AI技术辅助照片分析、年龄推演与线索匹配，提高寻亲效率。</p><a class="inline-flex items-center gap-2 text-primary font-bold group" href="#">立即体验 <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></a></div></div>
+</div>
+</section>
+<!-- Workflow Section -->
+<section class="bg-background relative overflow-hidden">
+<div class="max-w-[1200px] mx-auto px-unit-lg flex flex-col md:flex-row">
+<div class="flex-1 py-unit-xl">
+<div class="flex items-center gap-4 mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-background">我们的工作方式</h2>
+<div class="w-16 h-[2px] bg-outline-variant"></div>
+</div>
+<div class="relative py-12">
+<!-- Connecting Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 hidden md:block">
+<div class="h-full w-full bg-gradient-to-r from-transparent via-[#D4A74E] to-transparent opacity-60 shadow-[0_0_15px_#D4A74E]"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+<!-- Step 01 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D4A74E] flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_20px_#D4A74E]">
+<span class="text-[#D4A74E] font-bold">✦</span>
+</div>
+<div class="text-sm font-bold text-outline-variant mb-1">01</div>
+<h4 class="font-semibold text-body-lg mb-2">信息发布</h4>
+<p class="text-secondary text-label-sm max-w-[200px]">家属提交失踪人员信息、照片与相关资料。</p>
+</div>
+<!-- Step 02 (Highlighted) -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-full bg-white border-2 border-[#D4A74E] flex items-center justify-center mb-4 -mt-2 transition-all duration-300 group-hover:scale-110 shadow-[0_0_25px_rgba(212,167,78,0.4)] group-hover:shadow-[0_0_35px_rgba(212,167,78,0.6)]">
+<span class="text-[#D4A74E] text-xl font-bold">✦</span>
+</div>
+<div class="text-sm font-bold text-primary mb-1">02</div>
+<h4 class="font-semibold text-body-lg mb-2 text-primary">星图智能分析</h4>
+<p class="text-secondary text-label-sm max-w-[200px]">AI分析照片特征、年龄变化趋势、历史线索与关联信息。</p>
+</div>
+<!-- Step 03 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-[#D4A74E] flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_20px_#D4A74E]">
+<span class="text-[#D4A74E] font-bold">✦</span>
+</div>
+<div class="text-sm font-bold text-outline-variant mb-1">03</div>
+<h4 class="font-semibold text-body-lg mb-2">线索核实</h4>
+<p class="text-secondary text-label-sm max-w-[200px]">由志愿者、工作人员与家属共同核验线索真实性。</p>
+</div>
+<!-- Step 04 (Final Reunion) -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-full bg-[#D4A74E] flex items-center justify-center mb-4 -mt-2 transition-all duration-300 group-hover:scale-110 shadow-[0_0_30px_rgba(212,167,78,0.5)]">
+<span class="text-white text-2xl">★</span>
+</div>
+<div class="text-sm font-bold text-outline-variant mb-1">04</div>
+<h4 class="font-semibold text-body-lg mb-2">助力团圆</h4>
+<p class="text-secondary text-label-sm max-w-[200px]">持续协查与跟进，帮助失散家庭重新团聚。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-[280px] bg-secondary-container p-unit-lg text-on-secondary-container flex flex-col items-center justify-center gap-6 md:ml-12 rounded-xl shadow-lg border border-primary/10 self-center transition-all duration-500 hover:shadow-xl">
+  <div class="w-16 h-16 rounded-full bg-white/50 flex items-center justify-center mb-2"><span class="material-symbols-outlined text-[48px] text-[#D4A74E]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span></div>
+  <div class="text-center space-y-2"><h4 class="font-display text-[28px] font-bold leading-tight tracking-tight text-primary mb-4">汇聚点滴善意<br>助力万家团圆</h4><div class="w-12 h-[2px] bg-[#D4A74E]/30 mx-auto mb-4"></div><p class="text-body-md text-secondary italic leading-relaxed px-2 opacity-90">“每一条线索都是一束星光，每一次协作都在照亮归途。”</p></div>
+</div>
+</div>
+</section>
+<!-- Success Stories Section -->
+<section class="py-unit-xl bg-surface-container-lowest">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
+<div class="flex justify-between items-end mb-16">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">他们回家了</h2>
+<div class="w-16 h-[2px] bg-outline-variant"></div>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-background transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-background transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-gutter">
+<!-- Case 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A warm, emotional candid shot of a tearful reunion between an elderly mother and her adult son. They are embracing tightly in a sun-drenched living room. The lighting is soft and golden, creating a nostalgic and hopeful atmosphere. High-end lifestyle photography style with a focus on genuine human emotion." src="assets/images/home-02.png">
+</div>
+<h4 class="font-headline-md text-on-background mb-4 group-hover:text-primary transition-colors">走失23年，终与家人重逢</h4>
+<p class="text-on-surface-variant text-body-md mb-6">在志愿者和广大网友的帮助下，通过一条线索，最终确认身份。</p>
+<div class="flex justify-between items-center text-label-sm">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-secondary">家属故事</span>
+<span class="text-secondary">2024.05.12</span>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="group cursor-pointer"><div class="aspect-[4/3] rounded-xl overflow-hidden mb-6"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/home-03.jpg"></div><h4 class="font-headline-md text-on-background mb-4 group-hover:text-primary transition-colors">AI年龄推演辅助寻亲</h4><p class="text-on-surface-variant text-body-md mb-6">通过AI年龄推演技术，帮助家属还原失踪人员成年后的可能样貌，提高识别与匹配效率。</p><div class="flex justify-between items-center text-label-sm"><span class="bg-surface-container-high px-3 py-1 rounded-full text-secondary">AI辅助寻亲</span><span class="text-primary font-bold">查看案例</span></div></div>
+<!-- Case 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A silhouettes of a large group of people walking together across a hilltop at sunset. The sky is a gradient of deep orange and soft gold. The long shadows and collective movement symbolize community effort and common purpose. The visual style is expansive and cinematic." src="assets/images/home-04.png">
+</div>
+<h4 class="font-headline-md text-on-background mb-4 group-hover:text-primary transition-colors">爱从未放弃</h4>
+<p class="text-on-surface-variant text-body-md mb-6">无数次的希望与失望，最终在大家的帮助下迎来团圆。</p>
+<div class="flex justify-between items-center text-label-sm">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-secondary">志愿者故事</span>
+<span class="text-secondary">2024.03.21</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-on-background text-background overflow-hidden">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row">
+<div class="flex-1 py-unit-xl px-unit-lg space-y-unit-xl">
+<h2 class="text-[48px] md:text-[64px] font-bold leading-tight">
+                        你的一份善意<br>
+<span class="text-primary-container">照亮回家的路</span>
+</h2>
+<div class="grid md:grid-cols-3 gap-unit-lg">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary-container">near_me</span>
+<h5 class="font-bold">提供线索</h5>
+<p class="text-secondary-fixed-dim text-label-md">哪怕只是一个细节，也可能至关重要。</p>
+<a class="inline-flex items-center gap-2 text-primary-container font-bold group" href="#">
+                                立即提交线索 <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary-container">person_add</span>
+<h5 class="font-bold">成为志愿者</h5>
+<p class="text-secondary-fixed-dim text-label-md">用时间与专业，帮助更多家庭。</p>
+<a class="inline-flex items-center gap-2 text-primary-container font-bold group" href="#">
+                                立即加入 <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary-container">favorite</span>
+<h5 class="font-bold">支持我们</h5>
+<p class="text-secondary-fixed-dim text-label-md">您的捐助将用于技术开发、信息核实与寻人支持。</p>
+<a class="inline-flex items-center gap-2 text-primary-container font-bold group" href="#">
+                                立即支持 <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative h-[400px] md:h-auto">
+<img class="w-full h-full object-cover" data-alt="A poignant close-up image of cupped hands holding a single lit candle in a dark environment. The warm glow of the candle flame illuminates the hands and creates a soft, flickering bokeh background of warm lights. The composition is simple, elegant, and filled with a profound sense of hope and sanctity." src="assets/images/home-05.png">
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-[1200px] mx-auto px-unit-lg py-unit-xl grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-primary font-bold">星途归家</div>
+<p class="text-secondary text-label-sm leading-relaxed max-w-[240px]">
+                    星途归家是一个非营利性平台，致力于帮助失散家庭团圆。我们尊重隐私，保护信息安全，与您一起守护希望。
+                </p>
+<div class="flex gap-4">
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">chat</span></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">hub</span></a>
+</div>
+</div>
+<div class="space-y-6">
+<h6 class="font-bold text-on-background">平台服务</h6>
+<ul class="space-y-3 text-on-surface-variant font-label-sm">
+<li class=""><a class="hover:underline decoration-primary" href="hall.html#publish">发布寻人信息</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">线索提交</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">信息核实流程</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">寻人资源中心</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="font-bold text-on-background">帮助与支持</h6>
+<ul class="space-y-3 text-on-surface-variant font-label-sm">
+<li class=""><a class="hover:underline decoration-primary" href="#">常见问题</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">安全与隐私</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">使用指南</a></li>
+<li class=""><a class="hover:underline decoration-primary" href="#">联系我们</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="font-bold text-on-background">订阅我们的最新动态</h6>
+<p class="text-on-surface-variant font-label-sm">获取寻人知识、成功故事与平台最新进展。</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-background border border-outline-variant rounded px-4 py-2 text-label-sm focus:border-primary focus:ring-0 outline-none" placeholder="请输入您的邮箱" type="email">
+<button class="bg-on-background text-background px-4 py-2 rounded text-label-sm font-bold">订阅</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto px-unit-lg py-unit-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant font-label-sm">
+<div class="">© 2026 星途归家 (StarPath Home) 公益寻亲平台 版权所有</div>
+<div class="flex gap-8">
+<a class="hover:text-primary" href="#">隐私政策</a>
+<a class="hover:text-primary" href="#">服务条款</a>
+<a class="hover:text-primary" href="#">免责声明</a>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-8 right-8 flex flex-col gap-3 z-[100]" id="floating-toolbar"><!-- AI Assistant Button -->
+<button class="w-14 h-14 bg-[#D4A74E] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all group relative">
+  <span class="material-symbols-outlined text-[28px]">smart_toy</span>
+  <span class="absolute right-full mr-4 px-3 py-1.5 bg-inverse-surface text-background text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">AI 寻亲助手</span>
+</button>
+<!-- Contact Us Button -->
+<button class="w-14 h-14 bg-[#D4A74E] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all group relative">
+  <span class="material-symbols-outlined text-[28px]">support_agent</span>
+  <span class="absolute right-full mr-4 px-3 py-1.5 bg-inverse-surface text-background text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">联系客服</span>
+</button>
+<!-- Back to Top Button -->
+<button class="w-14 h-14 bg-[#D4A74E] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-all group relative" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+  <span class="material-symbols-outlined text-[28px]">arrow_upward</span>
+  <span class="absolute right-full mr-4 px-3 py-1.5 bg-inverse-surface text-background text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">回到顶部</span>
+</button></div>
+<script>
+    window.addEventListener('scroll', () => {
+        const backToTop = document.getElementById('back-to-top-container');
+        if (window.scrollY > 300) {
+            backToTop.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            backToTop.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        } else {
+            backToTop.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            backToTop.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        }
+    });
+</script>
+
+
+
+
+</body></html>
