@@ -148,6 +148,36 @@
   img {
     max-width: 100%;
   }
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  main,
+  section,
+  header,
+  footer,
+  nav,
+  div {
+    min-width: 0;
+  }
+  .max-w-\[1200px\],
+  .max-w-\[1360px\],
+  .max-w-7xl {
+    width: min(calc(100% - 48px), 1280px) !important;
+    max-width: none !important;
+  }
+  header nav,
+  header nav > div {
+    min-width: 0;
+  }
+  .h-\[600px\],
+  .md\:h-\[800px\] {
+    height: clamp(500px, 68vh, 680px) !important;
+  }
   .starpath-window,
   .rounded-xl,
   .rounded-lg {
@@ -179,46 +209,112 @@
     background: var(--star-gold);
     box-shadow: 0 0 18px rgba(212,167,78,.65);
   }
-</style>
-
-
-<style id="starpath-mobile-fix">
-  * { box-sizing: border-box; }
-  html, body { max-width: 100%; overflow-x: hidden; }
-  main, section, nav, header, footer, div { min-width: 0; }
-  img, video, canvas, svg { max-width: 100%; height: auto; }
-  @media (max-width: 768px) {
-    header nav { flex-wrap: wrap; gap: 12px; }
-    header nav > div.hidden, header nav .hidden.md\:flex { display: none !important; }
-    header nav > .flex.items-center.gap-4 { width: 100%; justify-content: flex-start; }
-    h1 { font-size: clamp(2rem, 8vw, 3rem) !important; line-height: 1.05 !important; }
-    h2 { font-size: clamp(1.4rem, 6vw, 2rem) !important; line-height: 1.15 !important; }
-    section { padding-left: 18px !important; padding-right: 18px !important; }
-    .max-w-\[1200px\] { max-width: 100% !important; }
-    .grid, .md\:grid-cols-2, .md\:grid-cols-3, .md\:grid-cols-4 { grid-template-columns: 1fr !important; }
-    .flex { flex-wrap: wrap; }
-    .overflow-hidden { overflow: hidden; }
-    .rounded-bl-\[120px\] { border-bottom-left-radius: 36px !important; }
-    [class*="w-["], [style*="width: 1200px"], [style*="width:1200px"] { max-width: 100% !important; }
-    .px-unit-lg, .px-6, .px-8, .px-10, .px-12 { padding-left: 16px !important; padding-right: 16px !important; }
-    .gap-gutter, .gap-unit-xl, .gap-unit-lg { gap: 16px !important; }
-    .starpath-page-mark { margin: 12px 16px 0 !important; }
-    button, a { max-width: 100%; }
+  @media (min-width: 1500px) {
+    .max-w-\[1200px\],
+    .max-w-\[1360px\],
+    .max-w-7xl {
+      width: min(calc(100% - 96px), 1680px) !important;
+    }
+    .h-\[600px\],
+    .md\:h-\[800px\] {
+      height: clamp(560px, 62vh, 760px) !important;
+    }
   }
-</style>
-
-
-<style id="starpath-clues-mobile-fix">
   @media (max-width: 768px) {
-    .overflow-x-auto { overflow-x: auto; max-width: 100%; }
-    .overflow-x-auto > div { min-width: max-content; }
-    .rounded-xl.border, .rounded-lg.border { max-width: 100%; }
-    .rounded-xl.border > .flex, .rounded-lg.border > .flex { flex-direction: column !important; align-items: stretch !important; }
-    .rounded-xl.border [class*="w-["], .rounded-lg.border [class*="w-\["] { width: 100% !important; max-width: 100% !important; }
-    .rounded-xl.border [class*="h-["], .rounded-lg.border [class*="h-\["] { max-height: 260px; }
-    .rounded-xl.border .flex-1, .rounded-lg.border .flex-1 { width: 100% !important; min-width: 0 !important; }
-    .rounded-xl.border .flex.items-center, .rounded-lg.border .flex.items-center { flex-wrap: wrap !important; }
-    .rounded-xl.border p, .rounded-lg.border p { overflow-wrap: anywhere; }
+    header nav {
+      width: 100% !important;
+      padding: 12px 16px !important;
+      gap: 12px !important;
+    }
+    header nav > div:first-child {
+      flex: 1 1 auto;
+    }
+    header nav .hidden.md\:flex {
+      display: none !important;
+    }
+    header nav button {
+      padding: 9px 13px !important;
+      font-size: 12px !important;
+      line-height: 16px !important;
+      white-space: nowrap;
+    }
+    .max-w-\[1200px\],
+    .max-w-\[1360px\],
+    .max-w-7xl {
+      width: calc(100% - 32px) !important;
+    }
+    section {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .px-unit-lg,
+    .px-gutter,
+    .px-6,
+    .px-8,
+    .px-10,
+    .px-12 {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+    h1 {
+      font-size: clamp(2.35rem, 11vw, 3.4rem) !important;
+      line-height: 1.08 !important;
+    }
+    h2 {
+      font-size: clamp(1.45rem, 7vw, 2rem) !important;
+      line-height: 1.18 !important;
+    }
+    .grid,
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4,
+    .grid-cols-5,
+    .grid-cols-6 {
+      grid-template-columns: 1fr !important;
+    }
+    .md\:grid-cols-2,
+    .md\:grid-cols-3,
+    .md\:grid-cols-4,
+    .md\:grid-cols-5,
+    .md\:grid-cols-6 {
+      grid-template-columns: 1fr !important;
+    }
+    .h-\[600px\],
+    .md\:h-\[800px\],
+    .starpath-hero-visual {
+      height: min(58vh, 420px) !important;
+    }
+    .rounded-bl-\[120px\] {
+      border-bottom-left-radius: 40px !important;
+    }
+    .starpath-page-mark {
+      margin: 12px 16px 0 !important;
+    }
+    button,
+    a,
+    p,
+    h1,
+    h2,
+    h3 {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+  }
+  @media (max-width: 480px) {
+    header nav {
+      align-items: center !important;
+    }
+    header nav button .material-symbols-outlined {
+      display: none !important;
+    }
+    .max-w-\[1200px\],
+    .max-w-\[1360px\],
+    .max-w-7xl {
+      width: calc(100% - 24px) !important;
+    }
+    .starpath-hero-visual {
+      height: 360px !important;
+    }
   }
 </style>
 
@@ -226,10 +322,10 @@
 <body class="bg-background text-on-background font-body-md min-h-screen">
 <!-- TopNavBar -->
 <header class="bg-background w-full top-0 sticky z-50 border-b border-outline-variant">
-<nav class="flex justify-between items-center max-w-[1360px] mx-auto px-unit-lg py-unit-md"><div class="flex items-center gap-unit-md"><div class="flex items-center gap-2"><div class="w-10 h-10 flex items-center justify-center text-[#D4A74E]"><span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">star</span></div><div class="flex flex-col"><span class="font-display text-xl font-bold text-primary leading-none tracking-tight">星途归家</span><span class="text-[10px] text-secondary font-medium tracking-[0.2em] uppercase">StarPath Home</span></div></div></div><div class="hidden md:flex gap-unit-xl items-center"><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="index.html">首页</a><a class="text-primary font-bold border-b-2 border-primary pb-1 text-body-md" href="hall.html">智能寻亲</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="clues.html">线索中心</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="volunteer.html">志愿者</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="about.html">关于我们</a></div><div class="flex items-center gap-4"><button class="bg-[#D4A74E] text-white px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-all shadow-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm">add_circle</span><span id="publish"></span>发布寻人信息</button></div></nav>
+<nav class="flex justify-between items-center max-w-[1200px] mx-auto px-unit-lg py-unit-md"><div class="flex items-center gap-unit-md"><div class="flex items-center gap-2"><div class="w-10 h-10 flex items-center justify-center text-[#D4A74E]"><span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">star</span></div><div class="flex flex-col"><span class="font-display text-xl font-bold text-primary leading-none tracking-tight">星途归家</span><span class="text-[10px] text-secondary font-medium tracking-[0.2em] uppercase">StarPath Home</span></div></div></div><div class="hidden md:flex gap-unit-xl items-center"><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="index.html">首页</a><a class="text-primary font-bold border-b-2 border-primary pb-1 text-body-md" href="hall.html">智能寻亲</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="clues.html">线索中心</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="volunteer.html">志愿者</a><a class="text-secondary hover:text-primary transition-colors font-medium text-body-md" href="about.html">关于我们</a></div><div class="flex items-center gap-4"><button class="bg-[#D4A74E] text-white px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-all shadow-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm">add_circle</span><span id="publish"></span>发布寻人信息</button></div></nav>
 </header>
 <div class="starpath-page-mark">智能寻亲 / StarPath Home</div>
-<main id="ai" class="max-w-[1360px] mx-auto px-unit-lg py-unit-xl">
+<main id="ai" class="max-w-[1200px] mx-auto px-unit-lg py-unit-xl">
 <!-- Hero Statistics Section -->
 <div class="mb-unit-xl flex flex-col md:flex-row justify-between items-end md:items-center gap-unit-lg">
 <div class="max-w-xl">
@@ -513,7 +609,7 @@
 </main>
 <!-- Footer -->
 <section class="bg-surface py-unit-xl border-t border-outline-variant">
-<div class="max-w-[1360px] mx-auto px-unit-lg">
+<div class="max-w-[1200px] mx-auto px-unit-lg">
 <!-- 1. Header -->
 <div class="text-center mb-unit-xl">
 <h2 class="font-display-lg text-display-lg text-on-surface mb-unit-sm">AI 智能匹配流程</h2>
@@ -633,7 +729,7 @@
 </div>
 </div>
 </section><footer class="bg-surface-container-lowest border-t border-outline-variant">
-<div class="max-w-[1360px] mx-auto px-unit-lg py-unit-xl grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="max-w-[1200px] mx-auto px-unit-lg py-unit-xl grid grid-cols-1 md:grid-cols-4 gap-gutter">
 <div class="space-y-6">
 <div class="font-headline-md text-headline-md text-primary font-bold">星途归家</div>
 <p class="text-secondary text-label-sm leading-relaxed max-w-[240px]">
@@ -672,7 +768,7 @@
 </div>
 </div>
 </div>
-<div class="max-w-[1360px] mx-auto px-unit-lg py-unit-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant font-label-sm">
+<div class="max-w-[1200px] mx-auto px-unit-lg py-unit-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant font-label-sm">
 <div class=""><span class="" style="color: rgb(76, 70, 59); font-family: Inter;">© 2026 星途归家 (StarPath Home) 公益寻亲平台 版权所有</span></div>
 <div class="flex gap-8">
 <a class="hover:text-primary" href="#">隐私政策</a>
